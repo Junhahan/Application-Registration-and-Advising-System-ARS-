@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Faculty Home </title>
+    <link rel="stylesheet" href="/static/universal.css">
+</head>
+<h1> Faculty Home </h1>
+
+<body>
+    <p> 
+        {% if session.get('permissions') == "Review": %}
+            <br> Review applicants here
+            <br> <a href="/applicantlist">List of Applicants</a>
+        {% endif %}
+        {% if 'finalDecision' in session: %}
+            {% if session.get('finalDecision') == "Yes": %}
+                <br> Make final decision
+                <br> <a href="/finaldecision">Final Decision</a>
+            {% endif %}
+            {% if session.get('permissions') == "AcceptTranscript": %}
+                <br> Confirm received transcripts
+                <br> <a href="/updatetranscript">Update Received Transcripts</a>
+            {% endif %}
+        {% endif %}
+    </p>
+</body>
+
+</html>

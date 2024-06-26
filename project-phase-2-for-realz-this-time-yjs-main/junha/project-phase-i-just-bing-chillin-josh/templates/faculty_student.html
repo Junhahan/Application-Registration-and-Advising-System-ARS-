@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Faculty advisor</title>
+    <style>
+      body {
+      background-image: url('/static/images/student_background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .content-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: navy;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class = "content-box">
+    <div class="logout-button">
+      <a href="/logout">Log out</a>
+    </div>
+    <div id="faculty-students-container">
+      <div id="faculty-select-title">
+        <p>Welcome, {{ fname }}. Here are your advisees.</p>
+      </div>
+      <form id="faculty-view-students" action="/faculty-students" method="POST">
+        <select id="student-select" name="student_id">
+          {% for i in range(users|length) %}
+          <option value="{{users[i]}}">
+            {{fnames[i]}} {{lnames[i]}} {{emails[i]}}
+          </option>
+          {% endfor %}
+        </select>
+        <input type="submit" id="student-view-submit" value="Select student" />
+      </form>
+      <button onclick="location.href='/inbox'">Email</button>
+    </div>
+  </div>
+  </body>
+</html>

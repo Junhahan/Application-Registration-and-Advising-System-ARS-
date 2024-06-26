@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Graduate Applicants</title>
+</head>
+<body>
+    <h1>Graduate Applicants</h1>
+    <form action="/graduate_applicants" method="POST">
+        <label for="semester">Semester:</label>
+        <input type="text" id="semester" name="semester"><br>
+
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year"><br>
+
+        <label for="degreeProgram">Degree Program:</label>
+        <input type="text" id="degreeProgram" name="degreeProgram"><br>
+
+        <input type="submit" value="Search">
+    </form>
+
+    {% if applicants %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Program</th>
+            <th>Semester</th>
+            <th>Application Status</th>
+        </tr>
+        {% for applicant in applicants %}
+        <tr>
+            <td>{{ applicant['name'] }}</td>
+            <td>{{ applicant['program'] }}</td>
+            <td>{{ applicant['semester'] }}</td>
+            <td>{{ applicant['year'] }}</td>
+            <td>{{ applicant['application_status'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>

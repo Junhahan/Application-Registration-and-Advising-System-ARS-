@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Applicant Admission Decision</title>
+</head>
+<body>
+    <h1> Would you like to accpet the offer?</h1>
+    <form action="/admission_decision/{{ applicant_uid }}" method="POST">
+        <label for="decision">Decision:</label><br>
+        <input type="radio" id="accept" name="decision" value="accept">
+        <label for="accept">Accept</label><br>
+        <input type="radio" id="decline" name="decision" value="decline">
+        <label for="decline">Decline</label><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

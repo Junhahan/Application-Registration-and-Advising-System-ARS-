@@ -1,0 +1,59 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background1.png'); 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: black; 
+}
+
+.container {
+    width: 86%;
+    margin: auto;
+    padding: 26px; 
+}
+
+header h1 {
+    text-align: center;
+}
+
+form {
+    margin-top: 26px;
+}
+
+form p, footer p {
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 96%;
+    padding: 13px;
+    margin: 13px 0;
+    display: inline-block;
+    border: 1px solid white; 
+    border-radius: 5px; 
+    box-sizing: border-box; 
+}
+
+input[type=submit] {
+    width: 96%;
+    background-color: blue; 
+    color: white;
+    padding: 17px 23px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: blue; 
+    display: inline-block;
+}
+
+footer {
+    margin-top: 31px;
+    text-align: center;
+}

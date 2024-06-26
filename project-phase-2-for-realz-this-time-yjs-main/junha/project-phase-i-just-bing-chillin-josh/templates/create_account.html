@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create a New Account</title>
+    <style>
+        body {
+        background-image: url('/static/images/student_background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      
+      .content-box {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: navy;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      </style>
+</head>
+<body>
+    <div class = "content-box">
+    <h1>Create a New Account</h1>
+    <form method="POST">
+        <input type="text" name="user_id" placeholder="User ID" required><br>
+        <select name="user_type" required>
+            <option value="MS">MS Student</option>
+            <option value="PHD">PhD Student</option>
+            <option value="FA">Faculty Advisor</option>
+            <option value="GS">Graduate Secretary</option>
+        </select><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="text" name="fname" placeholder="First Name" required><br>
+        <input type="text" name="lname" placeholder="Last Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="text" name="address" placeholder="Address" required><br>
+        <input type="submit" value="Create Account">
+    </form>
+    <button onclick="window.history.back();">Back</button>
+</div>
+</body>
+</html>

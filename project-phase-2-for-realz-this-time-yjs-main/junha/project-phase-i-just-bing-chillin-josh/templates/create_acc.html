@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}Sys admin view{% endblock %}</title>
+  </head>
+
+  <body>
+    {% block content %} {% if incorrectlogin == True %}
+    <h2>{{ errorMessage }}</h2>
+    {% endif %}
+    <h1>Create Acount</h1>
+    <form action="/register" method="post">
+      <label for="username">User_id(8 numbers):</label><br />
+      <input type="text" id="username" name="username" required /><br /><br />
+
+      <label for="password">Password:</label><br />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+      /><br /><br />
+
+      <label for="fname">First Name:</label><br />
+      <input type="text" id="fname" name="fname" required /><br /><br />
+
+      <label for="lname">Last Name:</label><br />
+      <input type="text" id="lname" name="lname" required /><br /><br />
+
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="address">Address:</label><br />
+      <input type="text" id="address" name="address" required /><br /><br />
+
+      <input type="submit" value="Register" />
+    </form>
+    <h3>Back to Login</h3>
+    <a href="back_to_sign_in">Sign In</a>
+    {% endblock %}
+  </body>
+</html>

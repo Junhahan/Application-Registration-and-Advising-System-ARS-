@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Form 1 Submitted</title>
+        <style>
+            body {
+            background-image: url('/static/images/student_background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+          }
+          
+          .content-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+      
+          button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: navy;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          }
+          </style>
+    </head>
+    <body>
+        <div class = "content-box">
+        <div class="logout-button">
+            <a href="/student_main_page">Go back to main</a>
+        </div>
+        <div class="form1-success">
+            Success! You have submitted your Form 1, and the courses you selected have passed the basic requirements.
+            If you opted to apply for graduation, your transcript was checked against 
+            your Form 1 and you have all courses you selected. Next, the Graduate Secretary and your Faculty Advisor must
+            approve your request for you to graduate. You can contact them through the main page.
+        </div>
+    </div>
+    </body>
+</html>

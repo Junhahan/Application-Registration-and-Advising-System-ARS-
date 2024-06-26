@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pay Deposit Fee</title>
+    <link rel="stylesheet" href="/static/universal.css">
+</head>
+<body>
+    <h1>Pay Your Deposit Fee</h1>
+    <form action="/pay_deposit" method="post">
+        <label for="amount">Deposit Amount:</label><br>
+        <input type="number" id="amount" name="amount" min="1" required><br><br>
+        <input type="submit" value="Pay Now">
+    </form>
+</body>
+</html>

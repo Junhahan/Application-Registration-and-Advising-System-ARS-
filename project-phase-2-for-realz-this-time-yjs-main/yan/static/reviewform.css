@@ -1,0 +1,72 @@
+body {
+    font-family: 'Georgia', serif;
+    background: #FFF0F5;
+    margin: 0;
+    padding: 20px;
+    color: #444;
+}
+
+h1 {
+    color: #FF69B4;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px dashed #FFB6C1;
+}
+
+form {
+    background: #FAEBD7;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 650px;
+    border-radius: 10px;
+    border: 1px solid #FFC0CB;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #D7837F;
+    font-size: 1.05em;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #FFC0CB;
+    border-radius: 5px;
+    background: #FFF;
+    color: #444;
+}
+
+input[type="radio"],
+input[type="submit"] {
+    cursor: pointer;
+}
+
+input[type="radio"] + label {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+input[type="submit"] {
+    background-color: #FF69B4;
+    color: #FFF;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #FF1493;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #FF69B4;
+    outline: none;
+}

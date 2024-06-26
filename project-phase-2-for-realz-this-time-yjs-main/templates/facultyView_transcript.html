@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty View Transcript</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            text-align: center; 
+        }
+        table{
+            text-align: center;
+        }
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          </div>
+        </div>
+      </nav>
+    <h1>Faculty View Transcript</h1>
+    <form method="POST">
+        <label for="student_UID">Enter Student UID:</label>
+        <input type="text" id="student_UID" name="student_UID" required>
+        <button type="submit">Search</button>
+    </form>
+    <div id="transcript_info">
+        {% if transcript_info %}
+            <h2>Transcript Information for Student</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>Course ID</th>
+                        <th>Course Title</th>
+                        <th>Grade</th>
+                        <th>Instructor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for info in transcript_info %}
+                        <tr>
+                            <td>{{ info['semester'] }}</td>
+                            <td>{{ info['IP_course_ID'] }}</td>
+                            <td>{{ info['IP_course_title'] }}</td>
+                            <td>{{ info['grade'] }}</td>
+                            <td>{{ info['instructor_username'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Assignment</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          </div>
+        </div>
+      </nav>
+    <div class="container mt-5">
+        <h2>Grade Assignment</h2>
+        <!-- Display Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+        <!-- Grade Assignment Form -->
+        <form method="post">
+            <div class="form-group">
+                <label for="student_UID">Student ID:</label>
+                <input type="text" class="form-control" id="student_UID" name="student_UID" required>
+            </div>
+            <div class="form-group">
+                <label for="course_title">Course Title:</label>
+                <input type="text" class="form-control" id="course_title" name="course_title" required>
+            </div>
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <input type="text" class="form-control" id="grade" name="grade" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Course #</th>
+                    <th>Course Title</th>
+                    <th>Instructor</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <p>IP Courses</p>
+                {% for student_course in student_courses %}
+                    <tr>
+                        <td>{{ student_course['student_UID'] }}</td>
+                        <td>{{ student_course['student_fname'] }}</td>
+                        <td>{{ student_course['student_lname'] }}</td>
+                        <td>{{ student_course['IP_course_ID'] }}</td>
+                        <td>{{ student_course['IP_course_title'] }}</td>
+                        <td>{{ student_course['IP_instructor_username'] }}</td>
+                        <td>{{ student_course['grade'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

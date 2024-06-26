@@ -1,0 +1,154 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+.alumnus-container{
+    max-width: 15%;
+    margin: auto;
+    padding: 20px;
+}
+
+#alumnus-profile-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.alumnus-form-row {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.alumnus-form-row label,
+.alumnus-form-row input,
+.alumnus-form-row select, 
+.alumnus-form-row textarea {
+    font-size: 20px;
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+
+.alumnus-form-row input[type="submit"] {
+    font-size:20px;
+    max-width:20%;
+    margin:auto;
+}
+
+.logout-button{
+    font-size:20px;
+}
+
+
+#faculty-students-container{
+    font-size:28px;
+    text-align: center;
+}
+
+#faculty-view-students label,
+#faculty-view-students input,
+#faculty-view-students select, 
+#faculty-view-students textarea  {
+    font-size:20px;
+    text-align: center;
+}
+
+.faculty-form-title {
+    text-align: center;
+    font-size:20px;
+    margin-bottom: 60px;
+}
+
+.faculty-form-row {
+    text-align: center;
+    font-size:20px;
+    margin-bottom: 20px;
+}
+
+
+/* form1.html */
+.form1{
+    font-size:30px;
+    margin:auto;
+}
+
+.form1-description{
+    padding-bottom:20px;
+    padding-top:20px;
+}
+
+.form1-element input[type="checkbox"]{
+    width:28px;
+    height:28px;
+}
+
+.form1-element input[type="submit"]{
+    width:10%;
+    height:40px;
+    font-size:26px;
+    margin-top:50px;
+}
+
+/* form1.html */
+
+
+/* form1-success.html */
+.form1-success{
+    font-size:30px;
+    text-align:center;
+}
+
+.form1-failure{
+    font-size:30px;
+    text-align:center;
+}
+
+/* form1-success.html */
+
+/* student.html */
+
+table{
+    justify-content:center;
+    margin:auto;
+    font-size:25px;
+}
+
+#faculty-thesis{
+    text-align:center;
+    font-size:15px;
+    margin:40px;
+}
+
+.centered-div{
+    text-align:center;
+    font-size:45px;
+    margin:auto;
+    padding-top:45px;
+    padding-bottom:45px;
+    font-family: 'Times New Roman';
+}
+
+.title-div{
+    text-align:center;
+    font-size:45px;
+    margin:auto;
+    padding-bottom:45px;
+    font-family: 'Times New Roman';
+}
+
+.centered-bod{
+    text-align:center;
+    font-size:25px;
+    margin:auto;
+    padding-top:25px;
+    padding-bottom:25px;
+    font-family: 'Times New Roman';
+}
+
+.faculty-div{
+    text-align:center;
+    font-size:35px;
+    margin:40px;
+}
+
+/* student.html */

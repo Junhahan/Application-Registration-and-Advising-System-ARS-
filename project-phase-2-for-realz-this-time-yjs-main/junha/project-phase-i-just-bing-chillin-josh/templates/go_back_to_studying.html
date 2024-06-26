@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Make a student go back to MS</title>
+    <style>
+      body {
+      background-image: url('/static/images/student_background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .content-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: navy;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    </style>
+  </head>
+  <body>
+    <div class = "content-box">
+    <h1>Search for a User</h1>
+    <div class="make-box">
+      <form method="POST">
+        <input
+          type="text"
+          name="search_query"
+          placeholder="Enter User ID or Name"
+          required
+        />
+        <input type="submit" value="Search" class="button" />
+      </form>
+    </div>
+    {% if users %}
+    <h2>Search Results:</h2>
+    <ul>
+      {% for user in users %}
+      <li>
+        {{ user.fname }} {{ user.lname }} ({{ user.user_type }}) - {{ user.email
+        }}
+        <form
+          action="{{ url_for('make_ms', user_id=user.user_id) }}"
+          method="POST"
+          style="display: inline"
+          onsubmit="return confirm('Are you sure you want to go back in time and make this student MS again?');"
+        >
+          <input type="submit" value="Delete" class="button button-danger" />
+        </form>
+      </li>
+      {% else %}
+      <li>No users found.</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Use the search box above to find users.</p>
+    {% endif %}
+    <button onclick="window.history.back();" class="button">Back</button>
+  </div>
+  </body>
+</html>

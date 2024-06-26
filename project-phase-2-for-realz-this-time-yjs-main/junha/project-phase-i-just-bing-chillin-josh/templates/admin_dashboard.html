@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Administrator Dashboard</title>
+    <style>
+      body {
+      background-image: url('/static/images/student_background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .content-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: navy;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    </style>
+  </head>
+  <body>
+    <div class = "content-box">
+    <h1>Welcome, {{ username }}</h1>
+    <nav>
+      <ul>
+        
+        <button onclick="location.href='/admin/search_user'">Search for a User</button>
+        <button onclick="location.href='/admin/create_account'">Create a New Account</button>
+        <button onclick="location.href='/inbox'">Email</button>
+        <button onclick="location.href='/admin/reset_db'">Reset the DB</button>
+        <!-- <button onclick="location.href='/admin/go_back_to_studying'">Rollback to MS</button> a-->
+        <li>
+          <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        </li>
+      </ul>
+    </nav>
+    <div>
+  </body>
+</html>

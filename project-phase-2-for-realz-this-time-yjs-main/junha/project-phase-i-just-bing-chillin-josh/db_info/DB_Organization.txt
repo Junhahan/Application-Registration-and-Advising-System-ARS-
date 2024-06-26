@@ -1,0 +1,144 @@
+Normalization Levels
+
+Overview:
+    This document explains each table in our database, summarizes the criteria we used 
+    for evaluating normalization level, and explains how the normalization level for each table was determined.
+    Note: in this document, "instructions" refers to ADS-2024.pdf, which is included in the repository.
+
+
+Database explanation:
+    Our current database includes 5 tables: StudentCourses, Users, Courses, Students, and FacultyStudents.
+    All of our tables are in Third Normal Form (3NF). BCNF was not evaluated. 
+
+    StudentCourses contains data about which courses a student has taken. 
+
+        course_id uses the name in the instructions. It is a foreign key that references course_id in Courses.
+
+        user_id is the GWID: ########, which is unique to each student. This is a foreign key that references the Users table.
+
+        semester is the YEAR#, where # is 0 if spring and 1 if fall. This is meant to make it easy to select in ascending order.
+
+        grade is stored as the letter grade (A, A-, B+, B, B-, C+, C, F) as outlined in the instructions. Storing GPA seems
+        more convenient, but this attempts to follow the instructions.
+
+        counts refers to whether a course should affect a user's GPA. This attribute is included to address the edge case of
+        retaken courses (the same course shouldn't affect GPA twice unless this is desired behavior). counts is 0 or 1.
+        If 1, it affects the student's GPA, if 0 it does not.
+
+        We chose to design our form 1 such that the user selects a course from the dropdown of all courses, and can do this
+        multiple times. Each time, the course they selected is removed from the dropdown for future cases. The form1 attribute
+        represents whether a course the student has taken has been selected. This forces the student to select all courses they
+        have taken when they submit the form1. This is only allowed, and required, for courses that have count as 1 (the course should count towards their GPA).
+
+
+    Users contains data about each user currently or previously at the school.
+
+        user_id is the GWID: ########, which is unique to each student.
+
+        user_type is a string, with values assigned as follows:
+            SA
+            GS
+            FA
+            MS
+            PHD
+            AL
+
+        This references all types defined in the instructions, and access levels / allowed behaviors vary per group.
+
+        password is user-defined, with size up to 99 characters and any standard character allowed 
+            (meaning any of ~!@#$%^&*_-+=`|(){}[]:;"'<>,.?/ and roman characters) (no spaces allowed) (99 VARCHAR).
+        
+        fname is the user's first name. 99 VARCHAR.
+
+        lname is the user's last name. 99 VARCHAR.
+
+        email is the user's email. 99 VARCHAR.
+
+        address is the user's current address. 99 VARCHAR.
+    
+
+    Courses lists all courses provided in the instructions, with the same information.
+
+    Prereqs are split into a separate table. Each row in the prereq table consists of the prereq's course_id
+    and the course which the prereq is for, which together form the primary key.
+
+
+    MastersStudents exists to store student-related information that not all users have. 
+    Specifically, grad_status tracks whether the student has applied for graduation.
+
+
+    DoctoralStudents exists to store PhD-student-related information that not all users have.
+    grad_status tracks whether the student has applied for graduation, and thesis holds the submitted thesis, if one is present.
+    This allows for easy access to this information in the review process.
+
+    AdvisorAssignments tracks which faculty are assigned to which students as their advisors. The columns hold GWIDs.
+    
+
+
+Normal form criteria (taken from Normalization slides, assumes previous tier met):
+    1NF:
+        1) Have a primary key to enforce uniqueness across rows
+        2) Atomic fields
+        3) No columns repeat the same "type" of information
+        4) Row order doesn't matter
+    2NF:
+        1) Non-prime attributes must depend on the full key, not a proper subset of it.
+    3NF:
+        1) Non-prime attributes cannot depend on any other non-prime attribute
+
+Normalization evaluation:
+
+    Table 1: StudentCourses
+        1NF: 
+            Primary key is course_id, user_id, semester. Criteria 2, 3, 4 met.
+        2NF: 
+            grade, counts and form1 validation require course_id, user_id AND semester (no partial dependency from primary key for any non-prime attribute)
+        3NF: 
+            No transitive dependency: grade doesn't directly affect counts, as this is determined by an administrator, form1 validation is separate from counts and grade and done by the user.
+
+    Table 2: Users
+        1NF: 
+            Primary key is user_id. Criteria 2, 3, 4 met.
+        2NF: 
+            Primary key is 1 column: no non-empty proper subsets exist, so a violation isn't possible.
+        3NF: 
+            None of user_type, password, fname, lname, email, address can always be identified from any combination of the others.
+            So there is no transitive dependence. "email" and "address" combined with fname, lname: yes, these probably identify
+            user_type, but not 100% of the time (there are some edge cases that prevent this), approval from our mentor Adham to include
+            these without risking violation of 3NF.
+
+    Table 3: Courses
+        1NF: 
+            Primary key is course_id. Criteria 2, 3, 4 met.
+        2NF: 
+            Primary key is 1 column: no non-empty proper subsets exist, so a violation isn't possible.
+        3NF: 
+            None of title, credits can be used to identify each other with certainty.
+
+    Table 4: Students
+        1NF:
+            Primary key is user_id. Criteria 2, 3, 4 met.
+        2NF: 
+            Primary key is 1 column: no non-empty proper subsets exist, so a violation isn't possible.
+        3NF: 
+            Only one non-prime attribute: grad_status, so dependence with other non-prime attributes isn't possible.
+
+    Table 5: FacultyStudents
+        1NF:
+            Primary key is student_id, faculty_id. Criteria 2, 3, 4 met.
+        2NF:
+            There are no non-prime attributes that could depend on only part of the primary key, so a violation isn't possible.
+        3NF:
+            There are no non-prime attributes that could depend on each other, so a violation isn't possible.
+
+    Table 6: Prereqs
+        1NF: 
+            Primary key is required_for, prereq. Criteria 2, 3, 4 met.
+        2NF:
+            There are no non-prime attributes that could depend on only part of the primary key, so a violation isn't possible.
+        3NF:
+            There are no non-prime attributes that could depend on each other, so a violation isn't possible.
+            
+
+    **Foreign key constraints (note on this requested by Dr Parmer)**:
+        All foreign keys, in purple in our schema, are prime attributes, so the constraints are respected.

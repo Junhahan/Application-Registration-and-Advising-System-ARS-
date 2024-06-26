@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <title>Form 1</title>
+</head>
+<body>
+  <div class="content-box">
+    <div class="form1">
+      <div class="form1-element">Form 1</div>
+      <div class="form1-description">
+        Please select all courses you have taken or plan to take. Select the last option only if you want to apply to graduate.
+      </div>
+      <div class="form1-element">
+        <form action="{{ url_for('form1') }}" method="POST">
+          <table>
+            {% for i in range(course_titles|length) %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="{{ course_ids[i] }}" id="{{ course_ids[i] }}" value="true" />
+                </td>
+                <td>
+                    <label for="{{ course_ids[i] }}">{{ course_titles[i] }} ({{ course_ids[i] }})</label>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+              <td><input type="checkbox" id="submit" name="graduate" /></td>
+              <td>Submit to Graduate Secretary</td>
+            </tr>
+          </table>
+          <input type="submit" value="Submit Form 1" class="btn btn-primary" />
+        </form>
+      </div>
+      <div class="form1-element">
+        <a href="{{ url_for('home') }}" class="back-button">Back</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

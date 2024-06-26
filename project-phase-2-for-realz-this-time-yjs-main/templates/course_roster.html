@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Course Roster</title>
+    </head>
+    <body>
+        <h1>Course Roster for Course ID {{ course_id }}</h1>
+        <table>
+            <thread>
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </tr>
+            </thread>
+            <tbody>
+                {% for student in roster %}
+                <tr>
+                    <td>{{ student.user_id }}</td>
+                    <td>{{ student.fname }}</td>
+                    <td>{{ student.lname }}</td>
+                    <td>{{ student.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Graduate Recommendation Letter Form</title>
+    <link rel="stylesheet" href="/static/reviewform.css">
+</head>
+<body>
+    <section>
+        <header>
+            <h1>Please Submit Your Recommendation Letters for the Application</h1>
+        </header>
+            <p>Provide details for each individual who will submit a recommendation letter on your behalf.</p>
+            <form id="recommendationLettersSubmission" action="/recommendations" method = "POST">
+                <fieldset>
+                    <legend>Recommender's Details</legend>
+                    <div class="recommender-information">
+                        <label for="name-of-recommender">Recommender's Full Name:</label>
+                        <input type="text" id="name-of-recommender" name="recommenderName" required>
+                        
+                        <label for="email-of-recommender">Recommender's Email:</label>
+                        <input type="email" id="email-of-recommender" name="recommenderEmail" required>
+                        
+                        <label for="profession-of-recommender">Recommender's Profession:</label>
+                        <input type="text" id="profession-of-recommender" name="recommenderProfession" required>
+                        
+                        <label for="affiliation-of-recommender">Recommender's Affiliation:</label>
+                        <input type="text" id="affiliation-of-recommender" name="recommenderAffiliation" required>
+                    </div>          
+                    <button type="submit">Submit Form</button>
+                </fieldset>
+            </form>
+        </section>
+</body>
+</html>

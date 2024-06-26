@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Application Status Here</title>
+    <link rel="stylesheet" href="/static/universal.css">
+</head>
+<body>
+
+<h1>Please Regularly Take a Look at Your Graduate Application Status</h1>
+<div id="checkstatus">
+    {% if checkstatus == 'Application Incomplete' or checkstatus == 'Application Incomplete - Transcript missing' or checkstatus == 'Application Incomplete - Recommendations missing' %}
+        <p>Application Incomplete </p>
+    {% elif checkstatus == 'Application Complete and Under Review' %}
+        <p>Application is successfully complete and under the process of reviewing. There is no decision at the current moment. Please regularly look at new updates.</p>
+    {% elif checkstatus == 'Admit with aid' or checkstatus == 'Admit without aid' %}
+        <p>Congratulations, I am very glad to say that you have been admitted to this program. Stay excited for your next journey. </p>
+    {% elif checkstatus == 'Reject' %}
+        <p>I am sorry to say that your application has been rejected. You're welcome to apply next year again.</p>
+    {% else %}
+        <p>Unexpected status: {{ checkstatus }}</p>
+    {% endif %}
+</div>
+ <a href="/recommendations">Go to Recommendations</a>
+
+<footer>
+    <p>Please let us know if you need any help or have questions. Contact us at help88@gmail.com</p>
+</footer>
+
+
+</body>
+</html>

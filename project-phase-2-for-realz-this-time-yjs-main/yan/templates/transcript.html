@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Trancript Received | Graduate Secretary</title>
+    <link rel="stylesheet" href="/static/universal.css">
+</head>
+<body>
+    <h1> Confirm Transcript </h1>
+    <form id = "checkTranscriptStatus" action = "/updatetranscript" method = "post">
+        <fieldset>
+        <legend>Please enter a UID to confirm received transcript</legend>
+            <div class="transcript-received">
+                    <label for="applicantUid">UID:</label>
+                    <input type="text" id="applicantUid" name="applicantUid" required><br>
+            </div>          
+            <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </body>
+</html>

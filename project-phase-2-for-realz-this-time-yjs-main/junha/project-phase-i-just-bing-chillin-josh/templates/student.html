@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Mentee information</title>
+        <style>
+            body {
+            background-image: url('/static/images/student_background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+          }
+          
+          .content-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+      
+          button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: navy;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          }
+          </style>
+    </head>
+    <body>
+        <div class = "content-box">
+        <div class="logout-button">
+            <a href="/profile">Back to students</a>
+        </div>
+        <div id="faculty-student-personal-info">
+            <div class="faculty-div">
+                <p>Personal information</p>
+            </div>
+            <div class="faculty-form-row">
+                <p><b>Student name</b>: {{fname}} {{lname}}</p>
+            </div>
+            <div class="faculty-form-row">
+                <p><b>Student email</b>: {{email}} </p>
+            </div>
+            <div class="faculty-form-row">
+                <p><b>Student address</b>: {{address}} </p>
+            </div>
+            <div class="faculty-form-row">
+                <p><b>Student ID</b>: {{user_id}}</p>
+            </div>
+            <div class="faculty-form-row">
+                <p><b>Program</b>: {{program}}</p>
+        </div>
+        <div class="faculty-div">
+            <p>Transcript</p>
+        </div>
+        <div class="faculty-student-table">
+            {% if courses|length == 0 %}
+                <p>No courses taken yet.</p>
+            {% else %}
+            <table> 
+                <tr>
+                    <th>Course</th>
+                    <th>Semester</th>
+                    <th>Grade</th>
+                    <th>Form1?</th>
+                    <th>Counts?</th>
+                </tr>
+                {% for i in range(courses|length) %}
+                <tr>
+                    <td>{{courses[i]}}</td>
+                    <td>{{semesters[i]}}</td>
+                    <td>{{grades[i]}}</td>
+                    <td>{{form1[i]}}</td>
+                    <td>{{counts[i]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+        <div class="faculty-div">
+            <p>Form 1</p>
+        </div>
+        <div class="faculty-student-table">
+            <table>
+            {% if form1_courses|length == 0 %}
+                <tr>
+                    <td>The student has not filled out a form1</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <th>Course</th>
+                    <th>Title</th>
+                    <th>Credits</th>
+                </tr>
+            {% for i in range(form1_courses|length) %}
+                <tr>
+                    <td>{{form1_courses[i]}}</td>
+                    <td>{{form1_titles[i]}}</td>
+                    <td>{{form1_credits[i]}}</td>
+                </tr>
+            {% endfor %}
+            {% endif %}
+            </table>
+        </div>
+        {% if thesis is not none %}
+            <div class="faculty-div">
+                <p>Thesis</p>
+            </div>
+            <div id="faculty-thesis">
+                {{thesis}}
+            </div>
+        {% endif %}
+        </div>
+    </body>
+</html>

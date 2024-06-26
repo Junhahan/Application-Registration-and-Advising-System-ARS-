@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  <title>Home page for Faculty Instructor</title>
+  <h1>Home Page</h1>
+  <h2>Hello {{user.fname}} {{user.lname}} , ID: {{user.uID}}</h2>
+  <body>
+    <h2>{{message}}</h2>
+        
+    <form action = "/search" method="POST">
+        Search for a student ID to see transcript: <input type ="text" name="search"> 
+        <input type = "submit" value= "search"><br>
+    </form>
+    <a href ="catalog"> Course Catalog</a>
+
+    <h3>Classes you teach</h3>
+    {% if classes != 0: %} {{classes.department}} {{classes.course_no}}
+    {{classes.title}}
+    <a href="class/{{classes.course_id}}">{{classes.title}}</a>
+    {{classes.day}} {{classes.time}}<br />
+    {% endif %}
+
+    <a href="/">Sign Out</a>
+  </body>
+  
+</html>

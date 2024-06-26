@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      {% block title %}Create Account Page (only for students){% endblock %}
+    </title>
+    <style>
+      body {
+          margin: 0;
+          padding: 0;
+      }
+      
+      .video-background {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          z-index: -1;
+      }
+      
+      .video-background video {
+          min-width: 100%;
+          min-height: 100%;
+          width: auto;
+          height: auto;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+      
+      .content-box {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(255, 255, 255, 0.8);
+          padding: 20px;
+          border-radius: 5px;
+          text-align: center;
+      }
+      </style>
+    </head>
+
+  <body>
+    <div class="video-background">
+      <video autoplay loop muted>
+          <source src="/static/videos/login.mp4" type="video/mp4">
+      </video>
+  </div>
+  <div class = "content-box">
+    {% block content %} {% if incorrectlogin == True %}
+    <h2>{{ errorMessage }}</h2>
+    {% endif %}
+    <h1>Create Acount</h1>
+    <form action="/register" method="post">
+      <label for="username">Username:</label><br />
+      <input type="text" id="username" name="username" required /><br /><br />
+
+      <label for="password">Password:</label><br />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+      /><br /><br />
+
+      <label for="fname">First Name:</label><br />
+      <input type="text" id="fname" name="fname" required /><br /><br />
+
+      <label for="lname">Last Name:</label><br />
+      <input type="text" id="lname" name="lname" required /><br /><br />
+
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="address">Address:</label><br />
+      <input type="text" id="address" name="address" required /><br /><br />
+
+      <input type="submit" value="Register" />
+    </form>
+    <a href="back_to_sign_in">Back to Login</a>
+    {% endblock %}
+  </div>
+  </body>
+</html>

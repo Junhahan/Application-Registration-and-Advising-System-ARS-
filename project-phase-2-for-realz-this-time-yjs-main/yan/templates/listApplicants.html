@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Applicant List </title>
+    <link rel="stylesheet" href="/static/universal.css">
+</head>
+<h1> Applicant List </h1>
+
+<body>
+    {% if applicants: %}
+    <p> Applicants </p>
+    <table>
+        <tr>
+            <th>UID</th>
+            <th>Name</th>
+            <th>Application Status</th>
+        </tr>
+        {% for applicant in applicants %}
+        <tr>
+            <th> <a href="review/{{applicant.uid}}">{{applicant.uid}}</a> </th>
+            <th> {{applicant.name}} </th>
+            <th> {{applicant.status}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p> No Applicants to Review</p>
+    {% endif %}
+
+</body>
+
+</html>

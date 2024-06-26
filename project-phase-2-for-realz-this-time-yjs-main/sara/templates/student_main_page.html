@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome Page</title>
+    <style>
+      body {
+      background-image: url('/static/images/student_background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .content-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .logout-button {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: navy;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+      </style>
+  </head>
+  <body>
+  <div class="content-box">
+    <h1>Welcome {{ fname }} {{ lname }}</h1>
+    <div>
+      <button onclick="location.href='/inbox'">Email</button>
+      <button onclick="location.href='/form1'">Form 1</button>
+      <button onclick="location.href='/update_personal_info/{{ user_id }}'">
+        Personal Information
+      </button>
+      <button onclick="location.href='/class_info/{{ user_id }}'">
+        Class Information
+      </button>
+    </div>
+    <div>
+      <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+    </div>
+  </div>
+  </body>
+</html>

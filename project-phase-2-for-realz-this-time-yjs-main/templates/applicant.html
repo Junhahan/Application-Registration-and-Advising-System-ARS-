@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Portal</title>
+    <link rel="stylesheet" href="/static/applicant.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Application Portal</h1>
+        </header>
+
+        <form id="applicationForm" action="/apply" method="POST">
+            <p>Create Your Account</p>
+            <label for="username">Create Your Username:</label>
+            <input type="text" id="create-username" name="applicantUsername" required>
+            <br>
+
+            <label for="password">Create Your Password:</label>
+            <input type="password" id="create-password" name="applicantPassword" required>
+            <br>
+
+            <p>Applicant Information</p>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="applicantName" required>
+            <br>
+
+            <label for="address">Your Address:</label>
+            <input type="text" id="address" name="applicantAddress" required>
+            <br>
+
+            <label for="gender">Your Gender:</label>
+            <select id="gender" name="applicantGender" required>
+                <option value="">Select!</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+            </select>
+            <br>
+
+            <label for="ssid">Your Social Security Number (9 digits):</label>
+            <input type="text" id="applicant-social-security-number" name="applicantSsid" pattern="\d{3}-\d{2}-\d{4}" maxlength="11" required>
+            <br>
+
+            <label for="contactInfo">Your Contact Information:</label>
+            <input type="text" id="contactInfo" name="applicantContactInfo" required>
+            <br>
+
+            <p>Semester and Year of Application</p>
+            <select id="semester-and-year" name="applicantSemesterAndYear" required>
+                <option value="">Choose a specific Semester and Year</option>
+                <option value="Fall 2024">Fall 2024</option>
+                <option value="Spring 2025">Spring 2025</option>
+            </select>
+            <br>
+
+            <p>Please Select Either MS or PHD</p>
+            <div class="radio-option">
+            <input type="radio" id="degree-from-ms" name="degreeFromApplicant" value="MS">
+            <label for="degree-from-ms">MS</label><br>
+            <input type="radio" id="degree-from-phd" name="degreeFromApplicant" value="PHD">
+            <label for="degree-from-phd">PhD</label>
+            <br>
+
+            <p>Your Entrance Scores</p>
+            <label for="gre-verbal">GRE Verbal:</label>
+            <input type="number" id="gre-exam-verbal" name="GRE_verbal" min="0" max="170" required>
+            <br>
+
+            <label for="gre-quantitative">GRE Quantitative:</label>
+            <input type="number" id="gre-exam-quantitative" name="GRE_quantitative" min="0" max="170" required>
+            <br>
+
+            <label for="gre-year">Year of GRE Exam:</label>
+            <input type="number" id="year-of-gre-exam" name="GRE_examyear" required>
+            <br>
+
+            <label for="gre-advanced">GRE Advanced:</label>
+            <input type="number" id="your-advanced-gre" name="GRE_advanced">
+            <br>
+
+            <label for="gre-subject">GRE Subject:</label>
+            <input type="text" id="applicant-gre-subject" name="GRE_subject">
+            <br>
+
+            <label for="toefl-score">TOEFL Score:</label>
+            <input type="number" id="toefl-exam-score" name="TOEFL">
+            <br>
+
+            <label for="toefl-date">Date of TOEFL Exam:</label>
+            <input type="date" id="toefl-exam-date" name="TOEFL_date">
+            <br>
+
+            <p>Prior Degrees</p>
+            <label for="ms-major">MS Major:</label>
+            <input type="text" id="ms-major" name="MS_major" required>
+            <br>
+
+            <label for="ms-gpa">MS GPA:</label>
+            <input type="number" id="ms-in-degree" name="MS_GPA" min="0" max="4.0" step="0.01">
+            <br>
+
+            <label for="ms-year">MS Year:</label>
+            <input type="number" id="year-in-ms" name="MS_year">
+            <br>
+
+            <label for="ms-university">MS University:</label>
+            <input type="text" id="university-ms" name="MS_uni">
+            <br>
+
+            <label for="bs-ba-major">BS/BA Major:</label>
+            <input type="text" id="bs-major" name="BS_BA_major" required>
+            <br>
+
+            <label for="bs-gpa">BS/BA GPA:</label>
+            <input type="number" id="gpa-bs" name="BS_BA_GPA" min="0" max="4.0" step="0.01">
+            <br>
+
+            <label for="bs-year">BS/BA Year:</label>
+            <input type="number" id="year-in-bs" name="BS_BA_year">
+            <br>
+
+            <label for="bs-university">BS/BA University:</label>
+            <input type="text" id="university-in-bs" name="BS_uni">
+            <br>
+
+            <p>Please Write Your Area of Interest and Experience</p>
+            <label for="areas-of-interest">Areas of Interest:</label>
+            <textarea id="areas-of-interest" name="applicantAreasOfInterest" required></textarea>
+            <br>
+
+            <label for="experience">Experience:</label>
+            <textarea id="experience" name="applicantExperience" required></textarea>
+            <br>
+
+            <input type="submit" value="Submit Here">
+        </form>
+
+        <footer>
+            <p>Please let us know if you need any help or have questions. You can contact us at help88@gmail.com</p>
+        </footer>
+    </div>
+
+    <!-- Javascript from ISTM knowledge for SSID dashes --> 
+    <script>
+        // Using the ID, we retrieve the input element and add it to the fieldSsidInputVariable
+        var fieldSsidInput = document.getElementById('applicant-social-security-number');
+        // Event listener in the input field = aware of any changes to the input
+        fieldSsidInput.addEventListener('input', function(eventInput) {
+            // Take the event object current input field value and set it to the formattedInputValue
+            var formattedInputValue = eventInput.target.value;
+            // Take out all the characters which arent from the formattedInputValue
+            formattedInputValue = formattedInputValue.replace(/\D/g, '');
+            // Restructure to follow the required SSID format with dashes in between
+            formattedInputValue = formattedInputValue.substring(0, 3) + (formattedInputValue.length > 3 ? '-' : '') + formattedInputValue.substring(3, 5) + (formattedInputValue.length > 5 ? '-' : '') + formattedInputValue.substring(5);
+            // Update
+            eventInput.target.value = formattedInputValue;
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Graduate Admissions Review Form</title>
+        <link rel="stylesheet" href="/static/reviewform.css">
+    </head>
+<section id="final-decision-portion">
+    <h1>Final Decision</h1>
+
+    <form id="finalDecision" action = "/finaldecision/{{app_uid}}" method = "POST">
+        <label for="lastName">Name:</label><br>
+        {{applicantData.name}} <br>
+        <label for="UID">UID:</label><br>
+        {{applicantData.uid}} <br>
+
+        <label for="applicationSemester">Semester and Year of Application:</label><br>
+        {{applicantData.semester}} <br>
+        <p>Applying for Degree:</p> 
+        {{applicantData.program}}
+
+        <label for="greVerbal">GRE Verbal:</label><br>
+        {{applicantData.GRE_verbal}} <br>
+
+        <label for="greQuantitative">GRE Quantitative:</label><br>
+        {{applicantData.GRE_quantitative}} <br>
+
+        <label for="greYearOfExam">Year of Exam:</label><br>
+        {{applicantData.GRE_examyear}} <br>
+
+        <label for="greAdvancedScore">GRE Advanced Score:</label><br>
+        {{applicantData.GRE_advanced}} <br>
+
+        <label for="greAdvancedSubject">GRE Advanced Subject:</label><br>
+        {{applicantData.GRE_subject}} <br>
+
+        <label for="toeflScore">TOEFL Score:</label><br>
+        {{applicantData.TOEFL}} <br>
+
+        <label for="toeflDateOfExam">Date of Exam:</label><br>
+        {{applicantData.TOEFL_date}} <br>
+ 
+
+        <label for="priorDegree1">Prior Degree (MS):</label><br>
+
+        <label for="gpa1">GPA:</label><br>
+        {{applicantData.MS_GPA}} <br>
+
+        <label for="major1">Major:</label><br>
+        {{applicantPersonal.MS_major}} <br>
+
+        <label for="year1">Year:</label><br>
+        {{applicantData.MS_year}} <br>
+
+        <label for="university1">University:</label><br>
+        {{applicantData.MS_uni}} <br>
+
+        <label for="priorDegree2">Second Prior Degree (BS/BA):</label><br>
+        
+        <label for="gpa2">GPA:</label><br>
+        {{applicantData.BS_BA_GPA}} <br>
+
+        <label for="major2">Major:</label><br>
+        {{applicantPersonal.BS_BA_major}} <br>
+
+        <label for="year2">Year:</label><br>
+        {{applicantData.BS_BA_year}} <br>
+
+        <label for="university2">University:</label><br>
+        {{applicantData.BS_uni}} <br>
+
+
+        <label for="interests">Areas of Interest:</label><br>
+        {{applicantPersonal.interests}} <br>
+
+        <label for="experience">Experience:</label><br>
+        {{applicantPersonal.experience}} <br>
+
+        <p>Recommendation Letters Rating (Worst=1, Best=5):</p>
+
+        <label for="letter1Rating">1. Rating:</label>
+        {{reviewdata.recommendation1rating}} <br>
+        
+        <label for="letter1Generic">Generic:</label>
+        {{reviewdata.recommendation1generic}} <br>
+        
+        <label for="letter1Credible">Credible:</label>
+        {{reviewdata.recommendation1credible}} <br>
+        
+        <label for="letter1From">From:</label>
+         {{applicantRecommendations.rec_name}} <br>
+       
+        <p>Grad Admissions Committee (GAS) Review Rating:</p>
+        
+        {{reviewdata.gac_rating}} <br>
+
+        <label for="deficiencyCourses">Deficiency Courses if Any:</label><br>
+        {{reviewdata.deficiencycourses}} <br>
+
+        <label for="reasonsForReject">Reasons for Reject:(A =Incomplete Record, B= Does not meet minimum Requirements, C=ProblemswithLetters,D=Notcompetitive,E=Otherreasons)</label><br>
+        {{reviewdata.reasonsforrejection}} <br>
+        
+
+        <label for="decisionSelect">Final Decision:</label>
+        <select id="decisionSelect" name="decisionType" required>
+            <option value="">Select</option>
+            <option value="Admit with aid">Admit with aid</option>
+            <option value="Admit without aid">Admit without aid</option>
+            <option value="Reject">Reject</option>
+        </select>
+        <br>
+
+        <input type="submit" value = "Submit decision">
+    </form>
+</section>
+
+</html>
